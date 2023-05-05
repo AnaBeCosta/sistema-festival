@@ -5,4 +5,5 @@ const route = express.Router();
 module.exports = route;
 
 //Votar
-route.post("/votar", controller.postVoto)
+route.get("/", controller.getVotos)
+route.post("/votar", controller.postVoto);
