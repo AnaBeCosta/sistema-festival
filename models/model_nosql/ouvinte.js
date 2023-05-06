@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Ouvinte = Schema({
     ra: {type: String, required: true},
-    nota: {type: Number}
+    senha: {type: String, required: true}
 });
 
 module.exports = mongoose.model("Ouvinte", Ouvinte)
