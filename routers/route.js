@@ -2,13 +2,16 @@ const express = require('express');
 const controllerCandidato = require('../controllers/controllerCandidato');
 const controllerOuvinte = require('../controllers/controllerOuvinte');
 const controllerAdministrador = require('../controllers/controllerAdministrador');
+const controller = require('../controllers/controller');
 const route = express.Router();
 
 module.exports = route;
 
 // Login
+route.get('/', controller.logar);
 
 // Home
+
 
 
 // Ouvinte

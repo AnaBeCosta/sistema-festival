@@ -17,5 +17,10 @@ module.exports = {
         Ouvinte.find().then((ouvintes) => {
             res.render('/votos', {ouvintes: ouvintes.map(ouv => ouv.toJSON())});
         });
+    },
+    async logar(req, res) {
+        console.log('ENTROU NO LOGAR');
+        console.log(req.body);
+        res.render('usuario/login',{layout: 'noMenu.handlebars'});
     }
 }
