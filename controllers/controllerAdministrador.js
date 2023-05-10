@@ -19,24 +19,27 @@ module.exports = {
         return null;
     },
     async getOuvintes(req, res) {
+        console.log('entrou no getOuvintes');
         await Ouvinte.find().then((ouvintes) => {
-            res.render('/ouvintes', {ouvintes: ouvintes.map(ouvintes => ouvintes.toJSON())});
+            res.render('ouvinte/ouvintesList', {ouvintes: ouvintes.map(ouvintes => ouvintes.toJSON())});
         });
     },
     async getCandidatos(req, res) {
         await Candidato.find().then((candidatos) => {
-            res.render('/candidatos', {candidatos: candidatos.map(candidatos => candidatos.toJSON())});
+            res.render('candidato/candidatosList', {candidatos: candidatos.map(candidatos => candidatos.toJSON())});
         });
     },
     async editarOuvinte(req, res) {
         const {ra, senha} = req.body;
         const update = {ra, senha};
         let ouvinte = await Ouvinte.findOne({ra : ra});
+        console.log(ouvinte)
         await Ouvinte.updateOne(ouvinte, update);
 
         ouvinte.ra = update.ra;
         ouvinte.senha = update.senha;
         await ouvinte.save();
+        console.log(ouvinte)
 
         res.redirect('/home');
     },
@@ -54,9 +57,9 @@ module.exports = {
     },
     async excluirOuvinte(req, res) {
         let ouvinte = await controllerOuvinte.getOuvinte(req);
-        if(ouvinte == null) return;
-
-        await ouvinte.remove();
+        if(ouvinte != null) {
+            await Ouvinte.deleteOne({ra: ouvinte.ra})
+        }
         res.redirect('/home');
     },
     async excluirCandidato(req, res) {
@@ -68,7 +71,7 @@ module.exports = {
     },
     async getApresentacoes(req, res) {
         await Apresentacao.find().then((apresentacoes) => {
-            res.render('/apresentacoes', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
+            res.render('apresentacao/apresentacoesList', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
         });
     },
     async editarApresentacao(req, res) {
@@ -79,15 +82,17 @@ module.exports = {
     },
     async iniciarVotacao(req, res) {
         let adm = await Administrador.findOne();
-        adm.votacaoAberta = true;
         await Administrador.updateOne(adm, {votacaoAberta: true});
         await adm.save();
+        console.log(await Administrador.find())
+        res.redirect('/home');
     },
     async encerrarVotacao(req, res) {
         let adm = await Administrador.findOne();
-        adm.votacaoAberta = false;
         await Administrador.updateOne(adm, {votacaoAberta: false});
         await adm.save();
+        console.log(await Administrador.find())
+        res.redirect('/home');
     },
     async getApresentacoesByQtdVotos(req, res) {
         let apresentacoes = await Apresentacao.find();

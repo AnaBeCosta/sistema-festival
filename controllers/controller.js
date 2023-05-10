@@ -1,3 +1,4 @@
+const { identity } = require('lodash');
 const Ouvinte = require('../models/model_nosql/ouvinte');
 
 
@@ -20,7 +21,27 @@ module.exports = {
     },
     async logar(req, res) {
         console.log('ENTROU NO LOGAR');
-        console.log(req.body);
         res.render('usuario/login',{layout: 'noMenu.handlebars'});
-    }
+    },
+    async postLogin(req,res){
+        console.log(req.body);
+        const {ra, senha} = req.body;
+        const ouvinte = new Ouvinte({ra, senha});
+
+        Ouvinte.find()
+        console.log("OUV");
+        console.log(ouvinte);
+        await ouvinte.save();
+
+        Ouvinte.find().then((ouvintes) => {
+            console.log(ouvintes);
+            if(ouvintes.length > 0) {
+                res.render('home');
+            }
+            else{
+                res.redirect('/'); 
+            }
+            // res.render('/votos', {ouvintes: ouvintes.map(ouv => ouv.toJSON())});
+        });
+    },
 }

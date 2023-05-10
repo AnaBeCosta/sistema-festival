@@ -1,0 +1,32 @@
+<h2>Ouvintes cadastrados</h2>
+<table border="1px">​
+    <tr>​
+        <td> RA </td>​
+        <td> Senha</td>
+        <td> Nro</td>​​
+    </tr>​
+    {{#each ouvintes}}​
+    <tr>​
+        <td>{{ra}}</td>​
+        <td>{{senha}}</td>
+        <td>{{@index}}</td>​​
+    </tr>​
+    {{/each}}​
+</table>
+<br>
+<form action="/editarOuvinte" method="post">
+    <p>Editar ouvinte</p>
+    RA: <input type="text" name="ra">
+    <br><br>
+    Nova Senha: <input type="text" name="senha">
+    <br><br>
+    <input type="submit" value="Editar ouvinte">
+        
+</form>
+
+<br>
+<form action="/excluirOuvinte" method="post">
+    <p>Deletar ouvinte</p>
+    RA: <input type="text" name="ra">
+    <input type="submit" value="Deletar ouvinte">
+</form>
