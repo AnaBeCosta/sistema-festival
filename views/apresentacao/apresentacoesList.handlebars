@@ -15,3 +15,25 @@
     </tr>​
     {{/each}}​
 </table>
+<br>
+<form action="/editarApresentacao" method="post">
+    <p>Editar apresentação</p>
+    RA Candidato: <input type="text" name="ra_candidato">
+    <br><br>
+    Música: <input type="text" name="musica">
+    <br><br>
+    Integrantes: <input type="text" name="integrantes">
+    <br><br>
+    <input type="submit" value="Editar Apresentação">
+        
+</form>
+
+<br>
+<form action="/excluirApresentacao" method="post">
+    <p>Deletar apresentação</p>
+    RA Candidato: <input type="text" name="ra_candidato">
+    <br> <br>
+    Música: <input type="text" name="musica">
+    <br> <br>
+    <input type="submit" value="Deletar apresentação">
+</form>

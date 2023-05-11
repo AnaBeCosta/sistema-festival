@@ -64,9 +64,9 @@ module.exports = {
     },
     async excluirCandidato(req, res) {
         let candidato = await controllerCandidato.getCandidato(req);
-        if(candidato == null) return;
-
-        await candidato.remove();
+        if(candidato != null) {
+            await Candidato.deleteOne({ra: candidato.ra})
+        }
         res.redirect('/home');
     },
     async getApresentacoes(req, res) {
@@ -97,6 +97,6 @@ module.exports = {
     async getApresentacoesByQtdVotos(req, res) {
         let apresentacoes = await Apresentacao.find();
         apresentacoes.sort((a, b) => b.votos - a.votos);
-        res.render('/apresentacoesByVotos', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
+        res.render('votacao/resultados', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
     }
 }

@@ -1,0 +1,25 @@
+<h2>Apresentações cadastradas</h2>
+<table border="1px">​
+    <tr>​
+        <td> RA Candidato </td>​
+        <td> Música</td>
+        <td> Integrantes</td>​​
+    </tr>​
+    {{#each apresentacoes}}​
+    <tr>​
+        <td>{{ra_candidato}}</td>​
+        <td>{{musica}}</td>​​
+        <td>{{integrantes}}</td>​​​​
+    </tr>​
+    {{/each}}​
+</table>
+
+<form action="/votar" method="post">
+    <p>Informe qual apresentação deseja votar pelo RA Candidato e nome da música</p>
+    RA Candidato: <input type="text" name="ra_candidato"> 
+    <br>
+    Música: <input type="text" name="musica"> 
+    <br>
+    <input type="submit" value="Votar">
+        
+</form>

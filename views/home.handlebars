@@ -1,8 +1,11 @@
+<p>Olá, bem-vindo</p>
+<h3>Votação {{status}}</h3>
+
+{{#if value}}
 <form action="/votacaoAberta" method="get">
-    <p>Olá, bem-vindo</p>
-    <br><br>
     <input type="submit" value="Votar">
 </form>
+{{/if}}
 
 <form action="/apresentacao" method="get">
     <br><br>
@@ -11,17 +14,17 @@
 
 <form action="/ouvintes" method="get">
     <br><br>
-    <input type="submit" value="Ver ouvintes">
+    <input type="submit" value="Ouvintes">
 </form>
 
 <form action="/candidatos" method="get">
-    <br><br>
-    <input type="submit" value="Ver candidatos">
+    <br>
+    <input type="submit" value="Candidatos">
 </form>
 
 <form action="/apresentacoes" method="get">
-    <br><br>
-    <input type="submit" value="Ver apresentações">
+    <br>
+    <input type="submit" value="Apresentações">
 </form>
 
 <form action="/iniciarVotacao" method="get">
@@ -32,4 +35,9 @@
 <form action="/encerrarVotacao" method="get">
     <br>
     <input type="submit" value="Encerrar Votação">
+</form>
+
+<form action="/resultados" method="get">
+    <br><br>
+    <input type="submit" value="Resultados">
 </form>

@@ -11,12 +11,11 @@ module.exports = {
         res.redirect('/home');
     },
     async getCandidato(req, res) {
-        const {ra, senha} = req.body;
-        const candidato = new Candidato({ra, senha});
-        Candidato.find({ ra: candidato.ra}).then((c) => console.log(c));
-        if(c != null) return c;
-        res.redirect('/candidato', {candidato: c.toJSON()});
-    }, 
+        const {ra} = req.body;
+        let candidato = await Candidato.findOne({ra});
+        if(candidato != null) return candidato;
+        return null;
+    },
     async cadastrarApresentacao(req, res) {
         console.log('entrou no cadastrar apresentacao');
         const {ra_candidato, musica, integrantes} = req.body;
@@ -58,12 +57,11 @@ module.exports = {
         res.redirect('/home');
     },
     async excluirApresentacaoCandidato(req, res) {
-        const {ra_candidato, musica, integrantes} = req.body;
-        const apresentacao = new Apresentacao({ra_candidato, musica, integrantes});
-        await Apresentacao.find({musica: apresentacao.musica}).then((ap) => {
-            ap.remove();
-            console.log('apresentação excluida');
-        });
+        const {ra_candidato, musica} = req.body;
+        let apresentacao = await Apresentacao.findOne({ra_candidato, musica});
+        if(apresentacao != null){
+            await Apresentacao.deleteOne({ra_candidato: apresentacao.ra_candidato, musica: apresentacao.musica})
+        }
         res.redirect('/home');
-    }
+    },
 }

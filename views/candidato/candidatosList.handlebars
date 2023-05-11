@@ -11,3 +11,20 @@
     </tr>​
     {{/each}}​
 </table>
+<br>
+<form action="/editarCandidato" method="post">
+    <p>Editar candidato</p>
+    RA: <input type="text" name="ra">
+    <br><br>
+    Nova Senha: <input type="text" name="senha">
+    <br><br>
+    <input type="submit" value="Editar candidato">
+        
+</form>
+
+<br>
+<form action="/excluirCandidato" method="post">
+    <p>Deletar candidato</p>
+    RA: <input type="text" name="ra">
+    <input type="submit" value="Deletar Candidato">
+</form>

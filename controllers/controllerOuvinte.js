@@ -23,18 +23,19 @@ module.exports = {
     },
     async votar(req, res) {
         console.log('entrou no votar')
-        const {musica} = req.body;
-        let apresentacao = await Apresentacao.findOne({musica});
+        const {ra_candidato, musica} = req.body;
+        let apresentacao = await Apresentacao.findOne({ra_candidato, musica});
+        console.log(apresentacao);
         apresentacao.votos = apresentacao.votos + 1;
-        await apresentacao.save;
+        await apresentacao.save();
         res.redirect('/home');
     },
     async votacaoEstaAberta(req, res) {
-        let adm = Administrador.findOne();
-        if(adm != null && adm.votacaoAberta == true) {
-            res.redirect('/votar');
-        } 
-        res.redirect('/home');
+        res.redirect('/votacao');
+    },
+    async getVotacao(req, res) {
+        const apresentacoes = await Apresentacao.find();
+        res.render('votacao/votacao', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
     }
 
 }
