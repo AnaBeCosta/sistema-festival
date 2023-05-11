@@ -12,6 +12,7 @@
     <input type="submit" value="Cadastrar apresentação">
 </form>
 
+{{#if adm}}
 <form action="/ouvintes" method="get">
     <br><br>
     <input type="submit" value="Ouvintes">
@@ -20,11 +21,6 @@
 <form action="/candidatos" method="get">
     <br>
     <input type="submit" value="Candidatos">
-</form>
-
-<form action="/apresentacoes" method="get">
-    <br>
-    <input type="submit" value="Apresentações">
 </form>
 
 <form action="/iniciarVotacao" method="get">
@@ -41,3 +37,20 @@
     <br><br>
     <input type="submit" value="Resultados">
 </form>
+{{/if}}
+
+{{#if cand}}
+<form action="/minhasApresentacoes" method="get">
+    <br>
+    <input type="submit" value="Minhas apresentações">
+</form>
+{{/if}}
+
+<form action="/apresentacoes" method="get">
+    <br>
+    <input type="submit" value="Apresentações">
+</form>
+
+
+<br><br><br>
+<a href="logout"><button>Logout</button></a>

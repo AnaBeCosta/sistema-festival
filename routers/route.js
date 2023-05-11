@@ -11,9 +11,14 @@ module.exports = route;
 // Login
 route.get('/', controllerUsuario.logar);
 route.post("/login",controllerUsuario.postLogin);
+route.get('/logout', controllerUsuario.getLogout);
 
 // Home
 route.get("/home",async function(req,res){
+    if(req.session.ra == undefined || req.session.ra == ''){
+        res.redirect('/');
+    } 
+    
     const adm = await Administrador.findOne();
     let status;
     if(adm.votacaoAberta == true){
@@ -22,7 +27,10 @@ route.get("/home",async function(req,res){
     else {
         status = 'fechada'
     }
-    res.render('home', {status: status, value: adm.votacaoAberta});
+    const ehAdm = req.session.user === 'adm';
+    const ehCand = req.session.user === 'cand';
+
+    res.render('home', {status: status, value: adm.votacaoAberta, adm: ehAdm, cand: ehCand});
 });
 
 
@@ -38,7 +46,7 @@ route.post('/cadastrarCandidato', controllerCandidato.cadastrarCandidato);
 route.get('/candidato', controllerCandidato.getCandidato);
 route.get('/apresentacao', controllerCandidato.getApresentacao);
 route.post('/cadastrarApresentacao', controllerCandidato.cadastrarApresentacao);
-route.get('/candidato/apresentacoes', controllerCandidato.getApresentacoesCandidato);
+route.get('/minhasApresentacoes', controllerCandidato.getApresentacoesCandidato);
 route.post('/editarApresentacao', controllerCandidato.editarApresentacaoCandidato);
 route.post('/excluirApresentacao', controllerCandidato.excluirApresentacaoCandidato);
 

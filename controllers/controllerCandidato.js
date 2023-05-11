@@ -41,7 +41,7 @@ module.exports = {
         const {ra_candidato, musica, integrantes} = req.body;
         const apresentacao = new Apresentacao({ra_candidato, musica, integrantes});
         await Apresentacao.find({ra_candidato: apresentacao.ra_candidato}).then((apresentacoes) => {
-            res.render('/candidato/apresentacoes', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
+            res.render('apresentacao/apresentacoesList', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
         });
     },
     async editarApresentacaoCandidato(req, res) {
