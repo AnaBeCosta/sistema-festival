@@ -1,56 +1,31 @@
-<p>Olá, bem-vindo</p>
-<h3>Votação {{status}}</h3>
+<div class="container-md mt-3">
+    <p>Olá, bem-vindo</p>
 
-{{#if value}}
-<form action="/votacaoAberta" method="get">
-    <input type="submit" value="Votar">
-</form>
-{{/if}}
+    <!--VOTAÇÃO-->
+    <h5>Votação está {{status}}</h5>
+    <div class="d-grid gap-1 col-4 mx-auto">
+    <!--Se a votação estiver aberta-->
+    {{#if value}}
+        <a href="/votacaoAberta"><button type="submit" class="btn btn-success form-control">Votar</button></a>
+    {{/if}}
 
-<form action="/apresentacao" method="get">
-    <br><br>
-    <input type="submit" value="Cadastrar apresentação">
-</form>
+    <!--ADMIN-->
+    {{#if adm}}
+        <a href="/ouvintes"><button type="submit" class="btn btn-info form-control">Ouvintes</button></a>
+        <a href="/candidatos"><button type="submit" class="btn btn-info form-control">Candidatos</button></a>
+        <a href="/iniciarVotacao"><button type="submit" class="btn btn-info form-control">Iniciar Votação</button></a>
+        <a href="/encerrarVotacao"><button type="submit" class="btn btn-info form-control">Encerrar Votação</button></a>
+        <a href="/resultados"><button type="submit" class="btn btn-info form-control">Resultados</button></a>
+    {{/if}}
 
-{{#if adm}}
-<form action="/ouvintes" method="get">
-    <br><br>
-    <input type="submit" value="Ouvintes">
-</form>
+    <!--CANDIDATO-->
+    {{#if cand}}
+        <a href="/minhasApresentacoes"><button type="submit" class="btn btn-primary form-control">Minhas Apresentacoes</button></a>
+    {{/if}}
 
-<form action="/candidatos" method="get">
-    <br>
-    <input type="submit" value="Candidatos">
-</form>
-
-<form action="/iniciarVotacao" method="get">
-    <br><br>
-    <input type="submit" value="Iniciar Votação">
-</form>
-
-<form action="/encerrarVotacao" method="get">
-    <br>
-    <input type="submit" value="Encerrar Votação">
-</form>
-
-<form action="/resultados" method="get">
-    <br><br>
-    <input type="submit" value="Resultados">
-</form>
-{{/if}}
-
-{{#if cand}}
-<form action="/minhasApresentacoes" method="get">
-    <br>
-    <input type="submit" value="Minhas apresentações">
-</form>
-{{/if}}
-
-<form action="/apresentacoes" method="get">
-    <br>
-    <input type="submit" value="Apresentações">
-</form>
-
-
-<br><br><br>
-<a href="logout"><button>Logout</button></a>
+    <!--TODOS USUARIOS-->
+    <a href="/apresentacao"><button type="button" class="btn btn-primary form-control">Cadastrar apresentação</button></a>
+    <a href="/apresentacao"><button type="submit" class="btn btn-primary form-control">Apresentação</button></a>
+    </div>
+    <a href="logout"><button type="button" class="btn btn-outline-danger btn-sm mt-4">Logout</button></a>
+</div>
