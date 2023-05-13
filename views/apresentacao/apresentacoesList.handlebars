@@ -1,5 +1,77 @@
-<h2>Apresentações cadastradas</h2>
-<table border="1px">​
+<!--TABELA-->
+<div class="container mb-5 w-50">
+    <table class="table">
+    <p class="fs-4">Apresentações cadastradas</p>
+    <thead>
+        <tr>
+        <th scope="col">RA Candidato</th>
+        <th scope="col">Musica</th>
+        <th scope="col">Integrantes</th>
+        <th scope="col">Votos</th>
+        </tr>
+    </thead>
+    {{#each apresentacoes}}​
+        <tr>​
+            <td>{{ra_candidato}}</td>​
+            <td>{{musica}}</td>​​
+            <td>{{integrantes}}</td>​​
+            <td>{{votos}}</td>​​
+        </tr>​
+        {{/each}}​
+</table>
+</div>
+
+<!--EDITAR E EXCLUIR-->
+<div  class="row">
+
+    <!--EDITAR-->
+    <div class="col-sm-6">
+        <form action="/editarApresentacao" method="post" class="w-50">
+        <p class="fs-4">Editar Apresentação</p>
+        
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra_candidato" id="ra_candidato" placeholder="RA Candadito">
+            <input type="text" class="form-control" name="musica" placeholder="Nome da Música">
+            <input type="text" class="form-control" name="integrantes" placeholder="Integrantes">
+        </div>
+
+        <!--BUTTON EDITAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+        
+        </form>
+    </div>
+
+
+    <!--DELETAR-->
+    <div class="col-sm-6">
+        <form action="/excluirApresentacao" method="post" class="w-50">
+        <p class="fs-4">Deletar apresentação</p>
+        
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra_candidato" id="ra_candidato" placeholder="RA Candadito">
+            <input type="text" class="form-control" name="musica" placeholder="Nome da Música">
+        </div>
+
+        <!--BUTTON DELETAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary float-right">Deletar</button>
+        </div>
+        
+        </form>
+    </div> 
+</div>
+
+<!--VOLTAR-->
+<a href="#" onclick="history.back()">
+    <button type="button" class="btn btn-outline-danger">
+        Voltar
+    </button>
+</a>
+
+
+<!-- <table border="1px">​
     <tr>​
         <td> RA Candidato </td>​
         <td> Música</td>
@@ -15,7 +87,7 @@
     </tr>​
     {{/each}}​
 </table>
-<br>
+
 <form action="/editarApresentacao" method="post">
     <p>Editar apresentação</p>
     RA Candidato: <input type="text" name="ra_candidato">
@@ -28,7 +100,7 @@
         
 </form>
 
-<br>
+
 <form action="/excluirApresentacao" method="post">
     <p>Deletar apresentação</p>
     RA Candidato: <input type="text" name="ra_candidato">
@@ -37,5 +109,4 @@
     <br> <br>
     <input type="submit" value="Deletar apresentação">
 </form>
-<br>
-<a href="#" onclick="history.back()"><button>Voltar</button></a>
+-->

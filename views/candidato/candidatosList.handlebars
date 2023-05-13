@@ -1,3 +1,70 @@
+<!--TABELA-->
+<div class="container mb-5 w-50">
+    <table class="table">
+    <p class="fs-4">Candidatos cadastrados</p>
+    <thead>
+        <tr>
+        <th scope="col">RA</th>
+        <th scope="col">Senha</th>
+        </tr>
+    </thead>
+    {{#each candidatos}}​
+        <tr>​
+            <td>{{ra}}</td>​
+            <td>{{senha}}</td>​​
+        </tr>​
+    {{/each}}​
+    </table>
+</div>
+
+<!--EDITAR E EXCLUIR-->
+<div  class="row">
+
+    <!--EDITAR-->
+    <div class="col-sm-6">
+        <form action="/editarOuvinte" method="post" class="w-50">
+        <p class="fs-4">Editar Candidato</p>
+            
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra" placeholder="RA">
+            <input type="text" class="form-control" name="senha" placeholder="Nova Senha">
+        </div>
+
+        <!--BUTTON EDITAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+            
+        </form>
+    </div>
+
+    <!--DELETAR-->
+    <div class="col-sm-6">
+        <form action="/excluirOuvinte" method="post" class="w-50">
+        <p class="fs-4">Deletar Candidato</p>
+        
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra" placeholder="RA">
+        </div>
+
+        <!--BUTTON DELETAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary float-right">Deletar Candidato</button>
+        </div>
+        
+        </form>
+    </div> 
+</div>
+
+<!--VOLTAR-->
+<a href="#" onclick="history.back()">
+    <button type="button" class="btn btn-outline-danger">
+        Voltar
+    </button>
+</a>
+
+
+<!--
 <h2>Candidatos cadastrados</h2>
 <table border="1px">​
     <tr>​
@@ -12,6 +79,7 @@
     {{/each}}​
 </table>
 <br>
+
 <form action="/editarCandidato" method="post">
     <p>Editar candidato</p>
     RA: <input type="text" name="ra">
@@ -21,7 +89,6 @@
     <input type="submit" value="Editar candidato">
         
 </form>
-
 <br>
 <form action="/excluirCandidato" method="post">
     <p>Deletar candidato</p>
@@ -30,3 +97,4 @@
 </form>
 
 <a href="#" onclick="history.back()"><button>Voltar</button></a>
+-->

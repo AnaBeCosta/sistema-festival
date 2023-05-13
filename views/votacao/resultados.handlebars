@@ -1,3 +1,37 @@
+<!--TABELA-->
+<div class="container mb-5 w-50">
+    <table class="table">
+    <p class="fs-4">Resultados</p>
+    <thead>
+        <tr>
+        <th scope="col">RA Candidato</th>
+        <th scope="col">Musica</th>
+        <th scope="col">Integrantes</th>
+        <th scope="col">Votos</th>
+        </tr>
+    </thead>
+    {{#each apresentacoes}}​
+        <tr>​
+            <td>{{ra_candidato}}</td>​
+            <td>{{musica}}</td>​​
+            <td>{{integrantes}}</td>​​
+            <td>{{votos}}</td>​​
+        </tr>​
+        {{/each}}​
+</table>
+</div>
+
+
+<!--VOLTAR-->
+<a href="#" onclick="history.back()">
+    <button type="button" class="btn btn-outline-danger">
+        Voltar
+    </button>
+</a>
+
+
+
+<!--
 <h2>Resultados</h2>
 <table border="1px">​
     <tr>​
@@ -17,3 +51,4 @@
 </table>
 <br>
 <a href="#" onclick="history.back()"><button>Voltar</button></a>
+-->

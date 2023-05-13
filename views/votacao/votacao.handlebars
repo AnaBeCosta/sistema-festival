@@ -1,3 +1,57 @@
+<!--TABELA-->
+<div class="container mb-5 w-50">
+    <table class="table">
+    <p class="fs-4">Apresentações Cadastradas</p>
+    <thead>
+        <tr>
+        <th scope="col">RA Candidato</th>
+        <th scope="col">Musica</th>
+        <th scope="col">Integrantes</th>
+        </tr>
+    </thead>
+    {{#each apresentacoes}}​
+        <tr>​
+            <td>{{ra_candidato}}</td>​
+            <td>{{musica}}</td>​​
+            <td>{{integrantes}}</td>​​
+        </tr>​
+        {{/each}}​
+</table>
+</div>
+
+
+<!--VOLTAR-->
+<div class="col">
+    <form action="/votar" method="post" class="w-50">
+    <p class="fs-4">Informe qual apresentação deseja votar pelo RA Candidato e nome da música</p>
+        
+    <div class="row mb-1">
+        <input type="text" class="form-control" name="ra_candidato" id="ra_candidato" placeholder="RA Candadito">
+        <input type="text" class="form-control" name="musica" placeholder="Nome da Música">
+    </div>
+
+    <!--BUTTON-->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+
+        <!--BUTTON VOLTAR-->
+        <a href="#" onclick="history.back()">
+            <button type="button" class="btn btn-outline-danger">
+                Voltar
+            </button>
+        </a>
+        <!--BUTTON VOTAR-->
+        <button type="submit" class="btn btn-primary">VOTAR</button>
+        
+    </div>
+    </form>
+</div>
+
+
+
+
+
+
+<!--
 <h2>Apresentações cadastradas</h2>
 <table border="1px">​
     <tr>​
@@ -24,3 +78,4 @@
 </form>
 <br>
 <a href="#" onclick="history.back()"><button>Voltar</button></a>
+-->

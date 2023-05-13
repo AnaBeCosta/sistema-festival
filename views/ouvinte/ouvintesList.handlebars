@@ -1,3 +1,72 @@
+<!--TABELA-->
+<div class="container mb-5 w-50">
+    <table class="table">
+    <p class="fs-4">Ouvintes cadastrados</p>
+    <thead>
+        <tr>
+        <th scope="col">RA</th>
+        <th scope="col">Senha</th>
+        <th scope="col">Nro</th>
+        </tr>
+    </thead>
+    {{#each ouvintes}}​
+        <tr>​
+            <td>{{ra}}</td>​
+            <td>{{senha}}</td>​​
+            <td>{{@index}}</td>​​
+        </tr>​
+    {{/each}}​
+</table>
+</div>
+
+<!--EDITAR E EXCLUIR-->
+<div  class="row">
+
+    <!--EDITAR-->
+    <div class="col-sm-6">
+        <form action="/editarOuvinte" method="post" class="w-50">
+        <p class="fs-4">Editar Ouvinte</p>
+        
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra" placeholder="RA">
+            <input type="text" class="form-control" name="senha" placeholder="Nova Senha">
+        </div>
+
+        <!--BUTTON EDITAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+        
+        </form>
+    </div>
+
+
+    <!--DELETAR-->
+    <div class="col-sm-6">
+        <form action="/excluirOuvinte" method="post" class="w-50">
+        <p class="fs-4">Deletar Candidato</p>
+        
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra" placeholder="RA">
+        </div>
+
+        <!--BUTTON DELETAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary float-right">Deletar</button>
+        </div>
+        
+        </form>
+    </div> 
+</div>
+
+<!--VOLTAR-->
+<a href="#" onclick="history.back()">
+    <button type="button" class="btn btn-outline-danger">
+        Voltar
+    </button>
+</a>
+
+<!--
 <h2>Ouvintes cadastrados</h2>
 <table border="1px">​
     <tr>​
@@ -14,6 +83,7 @@
     {{/each}}​
 </table>
 <br>
+
 <form action="/editarOuvinte" method="post">
     <p>Editar ouvinte</p>
     RA: <input type="text" name="ra">
@@ -32,3 +102,4 @@
 </form>
 <br>
 <a href="#" onclick="history.back()"><button>Voltar</button></a>
+-->
