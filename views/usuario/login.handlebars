@@ -1,37 +1,42 @@
-<div class="card border-light mb-3" style="max-width: 680px;">
-    <div class="row g-0">
-        <div div class="col-md-4">
-            <img src="https://scontent-gru1-2.xx.fbcdn.net/v/t39.30808-6/315164288_548780463922292_5500368877018562674_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHhwtD8T49kV4OEZMjnIYugd61tk7oY5vl3rW2Tuhjm-UGEB-zR7kLRoKbd55NlyK5PLB9GlRdSsU6pw89dNurr&_nc_ohc=jHF5hevkVnUAX8myBQM&_nc_ht=scontent-gru1-2.xx&oh=00_AfBYV5aH3Gqk_DPaadlnw9cVCwfvezpk20zmXikpAI-tlg&oe=6463C6A5" class="card-img-top" alt="UTFPR-DV">
-        </div>
-        <div class="col-md-7">
-            <div class="card-body p-3">
-                <h4 class="fw-normal p-3">Faça o login ou cadastre-se</h4>
-                <form action="/login" method="post" class="row gy-2 gx-3 align-items-center">
-                    <div class="row g-2 align-items-center">
-                        <div class="col-md-3">
-                            <label class="col-form-label">RA:</label> 
-                        </div>
-                        <div class="col-auto">
-                            <input class="form-control" type="text" name="ra" id="login"></label>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="row g-3 align-items-center">
-                        <div class="col-md-3">
-                            <label class="col-form-label">Senha:</label> 
-                        </div>
-                        <div class="col-auto">
-                            <input class="form-control" type="password" name="senha">
-                        </div>
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary">Entrar</button>
-                        </div>
-                    </div>
-                </form>
+<div class="card" style="width: 18rem;">
+    <form action="/login" method="post">
+    <!--IMAGEM-->
+    <img class="card-img-top" style="height: 200px; object-fit: cover;" src="https://scontent-gru1-2.xx.fbcdn.net/v/t39.30808-6/315164288_548780463922292_5500368877018562674_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeHhwtD8T49kV4OEZMjnIYugd61tk7oY5vl3rW2Tuhjm-UGEB-zR7kLRoKbd55NlyK5PLB9GlRdSsU6pw89dNurr&_nc_ohc=jHF5hevkVnUAX8myBQM&_nc_ht=scontent-gru1-2.xx&oh=00_AfBYV5aH3Gqk_DPaadlnw9cVCwfvezpk20zmXikpAI-tlg&oe=6463C6A5" alt="UTFPR-DV">
+    
+
+    <!--FORMULARIO-->
+    <div class="card-body">
+    <p class="card-title mb-3">Faça o login ou cadastre-se</p>
+    <div class="card-text text-sm-start">
+        <!--RA-->        
+        <div class="row mb-1" style="font-size: 0.8em;">
+            <div class="col">
+                <label class="col-form-label">RA:</label> 
+            </div>
+            <div class="col-sm-9">
+                <input class="form-control-sm" type="text" name="ra" id="login">
+            </div>
+        </div>               
+
+        <!--SENHA-->     
+        <div class="row mb-1" style="font-size: 0.8em;">
+            <div class="col-sm-3">
+                <label class="col-form-label">Senha:</label> 
+            </div>
+            <div class="col-sm-9">
+                <input class="form-control-sm" type="password" name="senha">
             </div>
         </div>
+
+        <!--ENTRAR-->
+        <div class="d-grid gap-2 mt-4">
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </div>
     </div>
+    </div>
+    </form>
 </div>
-<br>
+
+
 <!--<script> function recuperarSenha() { window.location.href = "recuperarSenha/" + document.getElementById("login").value }</script>
 <button onclick=recuperarSenha()> Recupear Senha </button>-->
