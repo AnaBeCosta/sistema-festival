@@ -5,9 +5,25 @@
     <div class="fw-normal p-2">Votação está <div class="badge bg-dark text-wrap" style="width: 4rem;">{{status}}</div></div>
     <div class="d-grid gap-1 col-4 mx-auto">
     <!--Se a votação estiver aberta-->
-    {{#if value}}
-        <a href="/votacaoAberta"><button type="submit" class="btn btn-success form-control">Votar</button></a>
+    <!--CANDIDATO-->
+    {{#if cand}}
+        {{#if value}}
+            <a href="/votacaoAberta"><button type="submit" class="btn btn-success form-control">Votar</button></a>
+        {{/if}}
+        <a href="/minhasApresentacoes"><button type="submit" class="btn btn-primary form-control">Minhas Apresentacoes</button></a>
+        <a href="/cadastrarApresentacao"><button type="submit" class="btn btn-primary form-control">Cadastrar apresentação</button></a>
+        <a href="/apresentacao"><button type="submit" class="btn btn-primary form-control">Apresentações</button></a>
     {{/if}}
+
+    <!--OUVINTE-->
+    {{#if ouv}}
+        {{#if value}}
+            <a href="/votacaoAberta"><button type="submit" class="btn btn-success form-control">Votar</button></a>
+        {{/if}}
+        <a href="/cadastrarApresentacao"><button type="submit" class="btn btn-primary form-control">Cadastrar apresentação</button></a>
+        <a href="/apresentacao"><button type="submit" class="btn btn-primary form-control">Apresentações</button></a>
+    {{/if}}
+    
 
     <!--ADMIN-->
     {{#if adm}}
@@ -16,16 +32,10 @@
         <a href="/iniciarVotacao"><button type="submit" class="btn btn-info form-control">Iniciar Votação</button></a>
         <a href="/encerrarVotacao"><button type="submit" class="btn btn-info form-control">Encerrar Votação</button></a>
         <a href="/resultados"><button type="submit" class="btn btn-info form-control">Resultados</button></a>
+        <a href="/apresentacao"><button type="submit" class="btn btn-primary form-control">Cadastrar apresentação</button></a>
     {{/if}}
 
-    <!--CANDIDATO-->
-    {{#if cand}}
-        <a href="/minhasApresentacoes"><button type="submit" class="btn btn-primary form-control">Minhas Apresentacoes</button></a>
-    {{/if}}
 
     <!--TODOS USUARIOS-->
-    <a href="/apresentacao"><button type="button" class="btn btn-primary form-control">Cadastrar apresentação</button></a>
-    <a href="/apresentacao"><button type="submit" class="btn btn-primary form-control">Apresentação</button></a>
-    </div>
     <a href="logout"><button type="button" class="btn btn-outline-danger btn-sm mt-4">Logout</button></a>
 </div>

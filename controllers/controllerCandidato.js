@@ -16,26 +16,29 @@ module.exports = {
         if (candidato != null) return candidato;
         return null;
     },
+
     async cadastrarApresentacao(req, res) {
         console.log('entrou no cadastrar apresentacao');
         const { ra_candidato, musica, integrantes } = req.body;
         const apresentacao = new Apresentacao({ ra_candidato, musica, integrantes })
         let candidato = await Candidato.findOne({ ra: apresentacao.ra_candidato })
-
+        
         if (candidato == null) {
             let ouvinte = await Ouvinte.findOne({ ra: apresentacao.ra_candidato });
             const candidato = new Candidato({ ra: ouvinte.ra, senha: ouvinte.senha });
             await candidato.save();
         }
-
+        
         await apresentacao.save();
         await Apresentacao.find().then((e) => console.log(e))
-
+        
         res.redirect('/home');
     },
+
     async getApresentacao(req, res) {
-        console.log('entrou no get');
-        res.render('apresentacao/cadastrarApresentacao', { layout: 'noMenu.handlebars' });
+        await Apresentacao.find().then((apresentacoes) => {
+            res.render('apresentacao/apresentacoesCadastradas', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
+        });
     },
     async getApresentacoesCandidato(req, res) {
         const ra = req.session.ra;
@@ -69,3 +72,20 @@ module.exports = {
         res.redirect('/home');
     },
 }
+
+
+/*  console.log('entrou no cadastrar apresentacao');
+const { ra_candidato, musica, integrantes } = req.body;
+const apresentacao = new Apresentacao({ ra_candidato, musica, integrantes })
+let candidato = await Candidato.findOne({ ra: apresentacao.ra_candidato })
+
+if (candidato == null) {
+    let ouvinte = await Ouvinte.findOne({ ra: apresentacao.ra_candidato });
+    const candidato = new Candidato({ ra: ouvinte.ra, senha: ouvinte.senha });
+    await candidato.save();
+}
+
+await apresentacao.save();
+await Apresentacao.find().then((e) => console.log(e))
+
+res.redirect('/home');*/

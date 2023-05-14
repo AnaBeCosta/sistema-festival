@@ -1,0 +1,28 @@
+<!--TABELA-->
+<div class="container mb-5 w-50">
+    <table class="table">
+    <p class="fs-4">Apresentações cadastradas</p>
+    <thead>
+        <tr>
+        <th scope="col">RA Candidato</th>
+        <th scope="col">Musica</th>
+        <th scope="col">Integrantes</th>
+        </tr>
+    </thead>
+    {{#each apresentacoes}}​
+        <tr>​
+            <td>{{ra_candidato}}</td>​
+            <td>{{musica}}</td>​​
+            <td>{{integrantes}}</td>​​
+        </tr>​
+        {{/each}}​
+</table>
+</div>
+
+
+<!--VOLTAR-->
+<a href="#" onclick="history.back()">
+    <button type="button" class="btn btn-outline-danger">
+        Voltar
+    </button>
+</a>

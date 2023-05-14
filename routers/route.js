@@ -29,8 +29,9 @@ route.get("/home",async function(req,res){
     }
     const ehAdm = req.session.user === 'adm';
     const ehCand = req.session.user === 'cand';
+    const ehOuv = req.session.user === 'ouv';
 
-    res.render('home', {status: status, value: adm.votacaoAberta, adm: ehAdm, cand: ehCand});
+    res.render('home', {status: status, value: adm.votacaoAberta, adm: ehAdm, cand: ehCand, ouv: ehOuv});
 });
 
 

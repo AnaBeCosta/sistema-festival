@@ -8,6 +8,7 @@ const app = express();
 app.engine('handlebars', handlebars.engine({defaultLayout:'noMenu'}));
 app.set('view engine','handlebars');
 
+
 app.use(express.static(__dirname + 'public'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use(express.json());
