@@ -74,11 +74,25 @@ module.exports = {
             res.render('apresentacao/apresentacoesList', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
         });
     },
-    async editarApresentacao(req, res) {
-        await controllerCandidato.editarApresentacaoCandidato(req, res);
+    async editarApresentacaoAdministrador(req, res) {
+        const { ra_candidato, musica, integrantes } = req.body;
+        const update = { musica, integrantes };
+        let apresentacao = await Apresentacao.findOne({ ra_candidato: ra_candidato });
+        await Apresentacao.updateOne(apresentacao, update);
+
+        apresentacao.musica = update.musica;
+        apresentacao.integrantes = update.integrantes;
+        await apresentacao.save();
+
+        res.redirect('/home');
     },
     async excluirApresentacaoAdministrador(req, res) {
-        await controllerCandidato.excluirApresentacaoCandidato(req, res);
+        const { ra_candidato, musica } = req.body;
+        let apresentacao = await Apresentacao.findOne({ ra_candidato, musica });
+        if (apresentacao != null) {
+            await Apresentacao.deleteOne({ ra_candidato: apresentacao.ra_candidato, musica: apresentacao.musica })
+        }
+        res.redirect('/home');
     },
     async iniciarVotacao(req, res) {
         let adm = await Administrador.findOne();

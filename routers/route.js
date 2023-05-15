@@ -15,6 +15,8 @@ route.get('/logout', controllerUsuario.getLogout);
 
 // Home
 route.get("/home",async function(req,res){
+    console.log('entrou na home')
+    console.log(req.session)
     if(req.session.ra == undefined || req.session.ra == ''){
         res.redirect('/');
     } 
@@ -49,8 +51,8 @@ route.get('/apresentacaoCadastradas', controllerCandidato.getApresentacaoCadastr
 route.get('/telaCadastrarApresentacao', controllerCandidato.getTelaCadastrarApresentacao);
 route.post('/cadastrarApresentacao', controllerCandidato.cadastrarApresentacao);
 route.get('/minhasApresentacoes', controllerCandidato.getApresentacoesCandidato);
-route.post('/editarApresentacao', controllerCandidato.editarApresentacaoCandidato);
-route.post('/excluirApresentacao', controllerCandidato.excluirApresentacaoCandidato);
+route.post('/editarApresentacaoCandidato', controllerCandidato.editarApresentacaoCandidato);
+route.post('/excluirApresentacaoCandidato', controllerCandidato.excluirApresentacaoCandidato);
 
 // Administrador
 route.post('/cadastrarAdministrador', controllerAdministrador.cadastrarAdm);
@@ -61,6 +63,8 @@ route.post('/editarCandidato', controllerAdministrador.editarCandidato);
 route.post('/editarOuvinte', controllerAdministrador.editarOuvinte);
 route.post('/excluirOuvinte', controllerAdministrador.excluirOuvinte);
 route.post('/excluirCandidato', controllerAdministrador.excluirCandidato);
+route.post('/editarApresentacaoAdministrador', controllerAdministrador.editarApresentacaoAdministrador);
+route.post('/excluirApresentacaoAdministrador', controllerAdministrador.excluirApresentacaoAdministrador);
 route.get('/apresentacoes', controllerAdministrador.getApresentacoes);
 route.get('/iniciarVotacao', controllerAdministrador.iniciarVotacao);
 route.get('/encerrarVotacao', controllerAdministrador.encerrarVotacao);

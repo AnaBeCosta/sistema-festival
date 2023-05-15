@@ -1,7 +1,7 @@
 <!--TABELA-->
 <div class="container mb-5 w-50">
     <table class="table">
-    <p class="fs-4">Apresentações cadastradas</p>
+    <p class="fs-4">Todas as apresentações cadastradas</p>
     <thead>
         <tr>
         <th scope="col">RA Candidato</th>
@@ -19,6 +19,47 @@
 </table>
 </div>
 
+<!--EDITAR E EXCLUIR-->
+<div  class="row">
+
+    <!--EDITAR-->
+    <div class="col-sm-6">
+        <form action="/editarApresentacaoAdministrador" method="post" class="w-50">
+        <p class="fs-4">Editar Apresentação</p>
+        
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra_candidato" id="ra_candidato" placeholder="RA Candadito">
+            <input type="text" class="form-control" name="musica" placeholder="Nome da Música">
+            <input type="text" class="form-control" name="integrantes" placeholder="Integrantes">
+        </div>
+
+        <!--BUTTON EDITAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+        
+        </form>
+    </div>
+
+
+    <!--DELETAR-->
+    <div class="col-sm-6">
+        <form action="/excluirApresentacaoAdministrador" method="post" class="w-50">
+        <p class="fs-4">Deletar apresentação</p>
+        
+        <div class="row mb-1">
+            <input type="text" class="form-control" name="ra_candidato" id="ra_candidato" placeholder="RA Candadito">
+            <input type="text" class="form-control" name="musica" placeholder="Nome da Música">
+        </div>
+
+        <!--BUTTON DELETAR-->
+        <div class="d-md-flex justify-content-md-end">
+            <button type="submit" class="btn btn-primary float-right">Deletar</button>
+        </div>
+        
+        </form>
+    </div> 
+</div>
 
 <!--VOLTAR-->
 <a href="#" onclick="history.back()">

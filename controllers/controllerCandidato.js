@@ -19,12 +19,16 @@ module.exports = {
 
     async cadastrarApresentacao(req, res) {
         console.log('entrou no cadastrar apresentacao');
-        const { ra_candidato, musica, integrantes } = req.body;
-        const apresentacao = new Apresentacao({ ra_candidato, musica, integrantes })
-        let candidato = await Candidato.findOne({ ra: apresentacao.ra_candidato })
+        console.log(req.session)
+        const ra_candidato = req.session.ra;
+        console.log(ra_candidato)
+        const apresentacao = new Apresentacao({ ra_candidato: ra_candidato, musica: req.body.musica, integrantes: req.body.integrantes });
+        console.log(apresentacao);
+        let candidato = await Candidato.findOne({ ra: ra_candidato });
         
         if (candidato == null) {
-            let ouvinte = await Ouvinte.findOne({ ra: apresentacao.ra_candidato });
+            let ouvinte = await Ouvinte.findOne({ ra: ra_candidato });
+            console.log(ouvinte);
             const candidato = new Candidato({ ra: ouvinte.ra, senha: ouvinte.senha });
             await candidato.save();
         }
@@ -60,9 +64,10 @@ module.exports = {
         });
     },
     async editarApresentacaoCandidato(req, res) {
-        const { ra_candidato, musica, integrantes } = req.body;
+        const ra = req.session.ra;
+        const { musica, integrantes } = req.body;
         const update = { musica, integrantes };
-        let apresentacao = await Apresentacao.findOne({ ra_candidato: ra_candidato });
+        let apresentacao = await Apresentacao.findOne({ ra_candidato: ra });
         await Apresentacao.updateOne(apresentacao, update);
 
         apresentacao.musica = update.musica;
@@ -72,8 +77,9 @@ module.exports = {
         res.redirect('/home');
     },
     async excluirApresentacaoCandidato(req, res) {
-        const { ra_candidato, musica } = req.body;
-        let apresentacao = await Apresentacao.findOne({ ra_candidato, musica });
+        const ra = req.session.ra;
+        const musica = req.body.musica;
+        let apresentacao = await Apresentacao.findOne({ ra_candidato: ra, musica: musica });
         if (apresentacao != null) {
             await Apresentacao.deleteOne({ ra_candidato: apresentacao.ra_candidato, musica: apresentacao.musica })
         }
