@@ -45,7 +45,8 @@ route.get('/votacao', controllerOuvinte.getVotacao);
 // Candidato
 route.post('/cadastrarCandidato', controllerCandidato.cadastrarCandidato);
 route.get('/candidato', controllerCandidato.getCandidato);
-route.get('/apresentacao', controllerCandidato.getApresentacao);
+route.get('/apresentacaoCadastradas', controllerCandidato.getApresentacaoCadastradas);
+route.get('/telaCadastrarApresentacao', controllerCandidato.getTelaCadastrarApresentacao);
 route.post('/cadastrarApresentacao', controllerCandidato.cadastrarApresentacao);
 route.get('/minhasApresentacoes', controllerCandidato.getApresentacoesCandidato);
 route.post('/editarApresentacao', controllerCandidato.editarApresentacaoCandidato);

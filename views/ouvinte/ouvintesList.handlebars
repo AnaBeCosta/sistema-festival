@@ -4,16 +4,16 @@
     <p class="fs-4">Ouvintes cadastrados</p>
     <thead>
         <tr>
+        <th scope="col">Nro</th>
         <th scope="col">RA</th>
         <th scope="col">Senha</th>
-        <th scope="col">Nro</th>
         </tr>
     </thead>
     {{#each ouvintes}}​
-        <tr>​
+        <tr>
+            <td>{{@index}}</td>​
             <td>{{ra}}</td>​
-            <td>{{senha}}</td>​​
-            <td>{{@index}}</td>​​
+            <td>{{senha}}</td>​​​​
         </tr>​
     {{/each}}​
 </table>

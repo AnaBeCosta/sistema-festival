@@ -28,6 +28,10 @@ module.exports = {
             const candidato = new Candidato({ ra: ouvinte.ra, senha: ouvinte.senha });
             await candidato.save();
         }
+
+        if(req.session.user =='ouv'){
+            req.session.user = 'cand';
+        }
         
         await apresentacao.save();
         await Apresentacao.find().then((e) => console.log(e))
@@ -35,7 +39,11 @@ module.exports = {
         res.redirect('/home');
     },
 
-    async getApresentacao(req, res) {
+    async getTelaCadastrarApresentacao(req, res) {
+        res.render('apresentacao/cadastrarApresentacao');
+    },
+
+    async getApresentacaoCadastradas(req, res) {
         await Apresentacao.find().then((apresentacoes) => {
             res.render('apresentacao/apresentacoesCadastradas', {apresentacoes: apresentacoes.map(apresentacoes => apresentacoes.toJSON())});
         });
