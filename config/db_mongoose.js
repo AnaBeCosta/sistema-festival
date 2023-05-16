@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const updateCampoVoto = require('./migration');
 
 function connectToDatabase(){
     mongoose.connect(
@@ -9,7 +9,7 @@ function connectToDatabase(){
                 useNewUrlParser:true
             }
     );
-
+    updateCampoVoto();
     const db = mongoose.connection;
     db.on("error", (error) => console.error(error));
     db.once("open", () => console.log("Connected to the database!"));

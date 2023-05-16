@@ -1,6 +1,7 @@
 const Apresentacao = require('../models/model_nosql/apresentacao');
 const Ouvinte = require('../models/model_nosql/ouvinte');
 const Administrador = require('../models/model_nosql/administrador');
+const db = require('../config/db_mongoose');
 
 module.exports = {
 
