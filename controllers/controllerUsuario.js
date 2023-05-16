@@ -37,7 +37,7 @@ module.exports = {
         }
 
         // se não houver, cadastra como ouvinte
-        if (ouvinteBusca == null) {
+        if (ouvinteBusca == null && req.session.user != 'adm') {
             const ouvinte = new Ouvinte({ ra, senha });
             await ouvinte.save();
         }
